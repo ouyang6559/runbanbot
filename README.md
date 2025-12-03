@@ -1,0 +1,35 @@
+# RunBanBot
+[中文](./README_cn.md)
+
+Use docker/podman to start banbot:
+
+```shell
+git clone https://github.com/banbox/runbanbot.git
+cd runbanbot
+docker compose up -d
+```
+
+Then open [localhost:8000](http://localhost:8000/en-US/) in your browser to access it.
+
+## What’s next?
+
+* **Backtest existing strategies**: [Documentation](https://docs.banbot.site/en-US/guide/backtest)
+* **Add new strategies**: [Documentation](https://docs.banbot.site/en-US/guide/strat_custom)
+* **Live trading**: [Documentation](https://docs.banbot.site/en-US/guide/live_trading)
+* **Advanced customization**: If you want to perform more advanced research, such as using banbot to obtain K-lines of multiple assets during the same period and calculate their correlation, you can download the [banbot](https://github.com/banbox/banbot) source code, open it in an AI IDE, attach [doc/help.md](https://docs.banbot.site/en-US/guide/live_trading) as a knowledge base, and let AI help you write the required code.
+
+## FAQ
+
+#### Command 'docker' not found, but can be installed with
+
+Docker is not installed on your machine. You may install either docker or podman:
+
+* [docker](https://docs.docker.com/desktop/)
+* [podman](https://podman.io/docs/installation)
+
+> After installing podman, you need to [configure registries.conf](https://podman.io/docs/installation#registriesconf) to use Docker Hub by default; otherwise, image pulling will fail.
+> Docker installation includes `docker compose`; if you use podman, you need to install `docker-compose-v2` separately. You may ask AI: How to use docker compose based on podman socket?
+
+#### cannot listen on the TCP port: listen tcp4 :5432: bind: address already in use
+
+PostgreSQL is already running on your machine. You can change `PG_PORT` in `.env` to another port, such as `5433`, then restart.
