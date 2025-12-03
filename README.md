@@ -33,3 +33,7 @@ Docker is not installed on your machine. You may install either docker or podman
 #### cannot listen on the TCP port: listen tcp4 :5432: bind: address already in use
 
 PostgreSQL is already running on your machine. You can change `PG_PORT` in `.env` to another port, such as `5433`, then restart.
+
+#### no matching manifest for linux/arm64/v8 in the manifest list entries
+
+Your computer's CPU architecture is ARM. You need to modify `docker-compose.yml` and uncomment line 26, specifying `platform: linux/amd64`.

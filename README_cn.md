@@ -32,3 +32,6 @@ docker compose up -d
 
 #### cannot listen on the TCP port: listen tcp4 :5432: bind: address already in use
 您本地已有postgresql在运行，您可修改`.env`中的`PG_PORT`为其他端口，如`5433`，然后重新启动即可
+
+#### no matching manifest for linux/arm64/v8 in the manifest list entries
+您电脑CPU架构是arm，需要修改`docker-compose.yml`对第26行取消注释，指定`platform: linux/amd64`

@@ -14,7 +14,6 @@ services:
     volumes:
       - "${PGDATA_DIR}:/pgdata"
     healthcheck:
-      # 健康检查：等待数据库就绪，便于 pgAdmin 依赖
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d postgres || exit 1"]
       interval: 5s
       timeout: 4s
@@ -24,6 +23,7 @@ services:
 
   banbot:
     image: banbot/banbot:${BANBOT_TAG}
+    # platform: linux/amd64  # 如果是arm架构CPU，需取消注释此行，否则会错误：no matching manifest for linux/arm64
     container_name: ${BANBOT_NAME}
     ports:
       - "${BANBOT_PORT}:8000"
